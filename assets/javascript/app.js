@@ -1,5 +1,4 @@
 
-
 var counter = 30;
 var counterNumb;
 
@@ -68,4 +67,37 @@ for (var i = 0; i < questions.length; i++) {
 } 
 
 $(document).ready(function () {
+
+    $("#startGame").click(function () {
+        $('#startGame').hide();
+        counterNumb = setInterval(decrement, 1000);
+
+
+
     
+    
+});
+
+
+function (displayQuestions) {
+
+
+}
+
+
+
+function (displaySubmit) {
+
+
+}
+
+
+function (countdown) {
+
+}
+
+function (displayResults) {
+
+
+}
+
