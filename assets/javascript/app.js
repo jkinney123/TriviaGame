@@ -7,7 +7,7 @@ var wrongGuesses = 0;
 var unanswered = 0;
 var playerAns = []
 
-var questions = [ {
+var questions = [{
     question: "Which Coen Brothers cult classic film features the principal character hanging out at a bowling alley all the time, but the character never actually bowls?",
     choices: ["Crimewave", "Raising Arizona", "The Big Lebowski", "O Brother, Where Art Thou?",],
     answer: 2,
@@ -64,39 +64,77 @@ var questions = [ {
 
 for (var i = 0; i < questions.length; i++) {
     playerAns[i] = null;
-} 
+}
 
 $(document).ready(function () {
 
     $("#startGame").click(function () {
         $('#startGame').hide();
-        counterNumb = setInterval(decrement, 1000);
+        counterNumb = setInterval(countdown, 1000);
+        displayQuestions();
+        displaySubmit();
 
+        $("#submitAns").click(function () {
+            displayResults();
+        });
 
+        $("input").click(function () {
+            playerAns[this.name] = this.value;
 
-    
-    
+        });
+    });
 });
 
 
-function (displayQuestions) {
+function displayQuestions () {
+ for (var i = 0; i < questions.length; i++) {
+     $("#tempQuiz").append(questions[i].question + "</br>");
+
+     for (var x = 0; x < questions[i].choices.length; x++) {
+         $("#tempQuiz").append("<label class='radio inline'><input value='" + x + "' type='radio' name='" + i + "'>" + questions[i].choices[x] + "</label>");
+     }
+
+     $("#tempQuiz").append("<br/><br/>");
 
 
-}
-
-
-
-function (displaySubmit) {
-
-
-}
-
-
-function (countdown) {
+ }
 
 }
 
-function (displayResults) {
+
+
+function displaySubmit () {
+    $("#tempSubmit").append("<button id='submitQuiz' class='btn btn-primary btn-lg'>Submit</button>");
+}
+
+
+function countdown () {
+    counter--;
+    $("#timeRemaining").html("<h2><mark>" + counter + "seconds remaining.</mark></h2>");
+    if (counter === 0) {
+        displayResults();
+    }
+
+}
+
+function displayResults () {
+    $("#tempQuiz").hide();
+    $("#tempSubmit").hide();
+    $("#submitQuiz").hide();
+
+    for (i = 0; i < questions.length; i++) {
+        if (questions[i].answer == playerAns[i]) {
+            correctGuesses++;
+        }
+        else if (playerAns === null) {
+            unanswered++;
+        }
+        else {
+            wrongGuesses++;
+        }
+    }
+
+    
 
 
 }
