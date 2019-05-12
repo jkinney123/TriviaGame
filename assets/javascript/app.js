@@ -74,7 +74,7 @@ $(document).ready(function () {
         displayQuestions();
         displaySubmit();
 
-        $("#submitAns").click(function () {
+        $("#submitQuiz").click(function () {
             displayResults();
         });
 
@@ -95,12 +95,10 @@ function displayQuestions () {
      }
 
      $("#tempQuiz").append("<br/><br/>");
-
-
- }
+ 
+    }
 
 }
-
 
 
 function displaySubmit () {
@@ -134,8 +132,11 @@ function displayResults () {
         }
     }
 
-    
-
-
+    var quizResults = $("#Results");
+    $(quizResults).append("<p>All Done!</p>");
+    $(quizResults).append("<p>Correct Answers: " + correctGuesses + "</p>");
+    $(quizResults).append("<p>Incorrect Answers: " + wrongGuesses + "</p>");
+    $(quizResults).append("<p>Unanswered: " + unanswered + "</p>");
+    clearInterval(counterNumb);
 }
 
