@@ -1,5 +1,5 @@
 
-var counter = 60;
+var counter = 45;
 var counterNumb;
 
 var correctGuesses = 0;
