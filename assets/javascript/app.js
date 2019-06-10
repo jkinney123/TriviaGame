@@ -125,7 +125,7 @@ function displayResults () {
         if (questions[i].answer == playerAns[i]) {
             correctGuesses++;
         }
-        else if (playerAns === null) {
+        else if (playerAns[i] === null) {
             unanswered++;
         }
         else {
