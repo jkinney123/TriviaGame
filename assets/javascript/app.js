@@ -71,6 +71,7 @@ $(document).ready(function () {
     $("#startGame").click(function () {
         $('#startGame').hide();
         counterNumb = setInterval(countdown, 1000);
+        countdown();
         displayQuestions();
         displaySubmit();
 
